@@ -23,9 +23,11 @@ repositories {
     maven {
         url "https://oss.sonatype.org/content/repositories/snapshots/"
     }
+    jcenter()
 }
 
 dependencies {
+    implementation 'com.beust:klaxon:3.0.1'
     compile 'no.tornado:tornadofx:1.7.14'
     testCompile 'junit:junit:4.12'
     compile "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"

@@ -3,6 +3,7 @@ package online.p87.fplta.view
 import tornadofx.*
 import online.p87.fplta.app.Styles
 import online.p87.fplta.controller.AppController
+import online.p87.fplta.model.TeamModel
 
 class FormView: View("Enter team ID") {
 
@@ -18,8 +19,8 @@ class FormView: View("Enter team ID") {
                 action {
                     runAsync {
                         controller.fetchTeamData(textField.text)
-                    } ui { loadedText ->
-                        textField.text = loadedText
+                    } ui { teamModel: TeamModel ->
+                        textField.text = teamModel.name
                     }
                 }
             }
