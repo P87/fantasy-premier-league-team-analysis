@@ -20,10 +20,11 @@ class FormView: View("Enter team ID") {
                     runAsync {
                         controller.fetchTeamData(textField.text)
                     } ui { teamModel: TeamModel ->
-                        textField.text = teamModel.name
+                        replaceWith(find<HistoryView>(mapOf(HistoryView::teamModel to teamModel)))
                     }
                 }
             }
         }
+
     }
 }
