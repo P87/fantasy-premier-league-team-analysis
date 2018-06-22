@@ -8,12 +8,11 @@ class TeamModel(val name: String, val history: JsonArray<JsonObject>?) {
 
     fun getPointsAsMap(): SortedMap<Int, Int?> {
         val pointsHashMap: HashMap<Int, Int?> = hashMapOf()
-        this.history?.let {
-            for ((week, data) in this.history.withIndex()) {
-                pointsHashMap[week] = data.int("points")
-            }
-        }
 
-        return pointsHashMap.toSortedMap()
+        val pointsMap: Map<Int, Int?> = history?.withIndex()?.map { (week, data) ->
+            Pair(week, data.int("points"))
+        }?.toMap() ?: emptyMap()
+
+        return pointsMap.toSortedMap()
     }
 }
